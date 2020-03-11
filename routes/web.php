@@ -18,5 +18,11 @@ Route::get('/', function () {
 });
 
 Route::get('phpinfo', function () {
-    phpinfo();
+    $desired_debug_env = 'local';
+
+    if (app()->environment($desired_debug_env)):
+        phpinfo();
+    else:
+        return 'Enviroment is not '.$desired_debug_env;
+    endif;
 });
