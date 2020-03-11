@@ -1,0 +1,31 @@
+ip: 192.168.10.10
+memory: 2048
+cpus: 2
+provider: hyperv
+backup: true
+authorize: ~/.ssh/id_rsa.pub
+keys:
+  - ~/.ssh/id_rsa
+folders:
+  - map: 'G:\projects\laravel7'
+    to: /home/vagrant/code
+    smb_username: vagrant
+    smb_password: vagrant
+sites:
+  - map: laravel7.test
+    to: /home/vagrant/code/public
+    type: "laravel"
+    params:
+      - key: FOO
+        value: BAR
+variables:
+  - key: APP_ENV
+    value: local
+databases:
+  - laravel7
+features:
+  - mariadb: false
+  - ohmyzsh: false
+  - webdriver: false
+name: laravel7
+hostname: laravel7
