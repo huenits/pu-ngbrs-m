@@ -2,6 +2,10 @@
 
 ## Local setup
 
+- $ ``git clone git@github.com:huenisys/laravel7.git``
+- $ ``cd laravel7``
+- $ ``composer install``
+
 ### Windows users
 
 If using homestead per project installation, do the following:
