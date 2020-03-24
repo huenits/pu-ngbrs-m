@@ -14,3 +14,6 @@ yarn-error.log
 # homestead backup db
 /mysql_backup
 /postgres_backup
+
+# share
+desktop.ini
