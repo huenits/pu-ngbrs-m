@@ -1,9 +1,12 @@
-# laravel7
+# neighbors
+
+Project based on Laravel7
 
 ## Local setup
 
-- $ ``git clone git@github.com:huenisys/laravel7.git``
-- $ ``cd laravel7``
+- project was based on https://github.com/huenisys/laravel7
+- $ ``git clone git@github.com:huenisys/neighbors.git``
+- $ ``cd neighbors``
 - $ ``composer install``
 
 ### Windows users
@@ -23,7 +26,7 @@ If using homestead per project installation, do the following:
   # Homestead.yaml
   ---
   folders:
-    - map: 'G:\projects\laravel7'
+    - map: '{yourPath}\projects\neighbors'
       to: /home/vagrant/code
       smb_username: vagrant
       smb_password: vagrant
@@ -40,5 +43,5 @@ If using homestead per project installation, do the following:
 
 - database
   - by default, mysql is used
-  - local .env sample uses database: laravel7, user: homestead, password: secret
+  - local .env sample uses database: neighbors, user: homestead, password: secret
   - Use SSH tunnel using a capable client like Navicat
