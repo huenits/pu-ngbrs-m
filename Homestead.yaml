@@ -16,10 +16,16 @@ sites:
     to: /home/vagrant/code/public
     type: "laravel"
     params:
-      - key: FOO
-        value: BAR
+      - key: APP_ENV
+        value: local
+  - map: neighbors
+    to: /home/vagrant/code/public
+    type: "laravel"
+    params:
+      - key: APP_ENV
+        value: example
 variables:
-  - key: APP_ENV
+  - key: PAOLOVAR
     value: local
 databases:
   - neighbors

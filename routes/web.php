@@ -26,3 +26,7 @@ Route::get('phpinfo', function () {
         return 'Enviroment is not '.$desired_debug_env;
     endif;
 });
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

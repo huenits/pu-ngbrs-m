@@ -50,3 +50,31 @@ Project based on Laravel7
 - $ ``vagrant ssh``
 - $ ``art config:clear``
 - $ ``art test``
+- for dusk testing, env: example is used for having a stage deployment locally
+
+## Releasing
+
+- Use ``composer install --no-dev``
+
+## Local stage, env: example
+
+- serves as local staging
+- mysql database: neighbors
+- APP_ENV: example
+
+## Steps for automated deploy (Staging)
+
+- set env to STAGING
+- $ ``cp .env.example .env.staging``
+- $ ``art key:generate --env=staging``
+- $ ``composer install``
+- $ ``touch ~/database.sqlite``
+- $ ``art migrate --env=staging``
+- $ ``php artisan dusk:install``
+- Set APP_URL to match what's used for staging
+- Chrome binary should be installed
+- $ ``sudo apt update``
+- $ ``sudo apt install chromium-browser``
+- $ ``php artisan dusk:chrome-driver``
+
+
