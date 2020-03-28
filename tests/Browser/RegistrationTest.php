@@ -24,7 +24,7 @@ class RegistrationTest extends DuskTestCase
     {
         $this->browse(function (Browser $browser) {
             $browser->visit('/register')
-                ->assertSee('Neighbors.PH')
+                ->assertSee(config('app.name'))
                 ->assertSee('Register')
                 ->assertSchemeIs('https')
                 ->assertAttribute('#name', 'required', 'true')
