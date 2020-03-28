@@ -17,3 +17,6 @@ yarn-error.log
 
 # share
 desktop.ini
+
+# trust cert
+ca.homestead.neighbors.crt
