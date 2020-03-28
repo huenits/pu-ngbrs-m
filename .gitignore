@@ -19,4 +19,4 @@ yarn-error.log
 desktop.ini
 
 # trust cert
-ca.homestead.neighbors.crt
+ca.homestead.pu-ngbrs-m.crt

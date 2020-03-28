@@ -19,7 +19,7 @@ class LoginTest extends DuskTestCase
     {
         $this->browse(function (Browser $browser) {
             $browser->visit('/login')
-                ->assertSee('Neighbors.PH')
+                ->assertSee(config('app.name'))
                 ->assertSee('Login')
                 ->assertSchemeIs('https')
                 ->type('email', 'paul@someemail.com')
@@ -39,7 +39,7 @@ class LoginTest extends DuskTestCase
 
         $this->browse(function (Browser $browser) use($user) {
             $browser->visit('/')
-                ->assertSee('Neighbors.PH')
+                ->assertSee(config('app.name'))
                 ->visit('/login')
                 ->assertSee('Login')
                 ->type('email', $user->email)

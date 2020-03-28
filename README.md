@@ -1,10 +1,10 @@
-# neighbors
+# pu-ngbrs-m
 
 Project based on Laravel7
 
 ## Local setup
 
-- $ ``git clone git@gitlab.com:neighbors.ph/main.git``
+- $ ``git clone ${PROJ_REPO}``
 - $ ``composer install``
 - $ ``cp .env.staging .env``
   - $ ``php artisan key:generate``
@@ -13,8 +13,8 @@ Project based on Laravel7
     - APP_ENV
     - DB_DATABASE
     - DB_HOST
-  $ ``php artisan migrate --seed``
-  $ ``php artisan migrate:refresh --env=staging --seed``
+- $ ``php artisan migrate --seed``
+- $ ``php artisan migrate:refresh --env=staging --seed``
 
 ### More steps
 
@@ -26,15 +26,15 @@ Project based on Laravel7
 
 2. **Homestead setup**
     - Homestead is Laravel's pre-built machine for team development allowing you to easily host projects locally
-    - $ ``mklink Homestead.yaml Homestead.stub.yaml``
-    - Update folders > map value to project path. Mine is **_G:\projects\neighbors.ph\main_**
+    - $ ``cp Homestead.stub.yaml Homestead.yaml``
+    - Update folders > map value to project path.
     - Since Homestead uses SMB for shared dirs, share this project's folder to a pre-created dummy Windows user: <i title="username=vagrant password=vagrant">vagrant</i>. See relevant snippet below and note the credential.
 
       ```yaml
       # Homestead.yaml
       ---
       folders:
-        - map: '{projectParentPath}\neighbors'
+        - map: ${PROJ_DIR}
           to: /home/vagrant/code
           smb_username: vagrant
           smb_password: vagrant
@@ -46,10 +46,10 @@ Project based on Laravel7
         - password: secret
       - Environments
         - **_local_** 
-          - db_name: **neighbors** 
+          - db_name: **homestead** 
           - as set in Homestead.yaml > sites > params > **DB_DATABASE**
         - **_staging_** 
-          - db_name: **neighbors_staging**
+          - db_name: **homestead_staging**
           - as set in ``/.env.staging``
 
 3. **Install Vagrant**
@@ -61,7 +61,7 @@ Project based on Laravel7
     - SSL Trust Certificates setup, 
       - see: https://medium.com/dinssa/ssl-certificates-laravel-homestead-windows-https-f83ec8b3198
       - $ ``vagrant ssh``
-      - $ ``cp /etc/nginx/ssl/ca.homestead.neighbors.crt ~/code``
+      - $ ``cp /etc/nginx/ssl/ca.homestead.${APP_DOMAIN}.crt ~/code``
       - Go to [chrome://settings](chrome://settings)
       - Search **Manage certificates**
       - Click **Import** , and finish the wizard

@@ -18,7 +18,7 @@ class RoutesTest extends TestCase
         $response = $this->get('/');
 
         $response->assertStatus(200)
-            ->assertSee('Neighbors.PH');
+            ->assertSee(config('app.name'));
 
         //$response->dumpHeaders();
         //$response->dumpSession();

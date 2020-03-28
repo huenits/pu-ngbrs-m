@@ -13,7 +13,7 @@
               </div>
           @endif
 
-          Neighbors.PH welcomes you!
+          {{ config('app.name') }} welcomes you!
       </div>
   </div>
 </div>

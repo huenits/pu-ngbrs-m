@@ -8,39 +8,39 @@ authorize: ~/.ssh/id_rsa.pub
 keys:
   - ~/.ssh/id_rsa
 folders:
-  - map: 'G:\projects\neighbors.ph\main'
+  - map: ${PROJ_DIR}
     to: /home/vagrant/code
     smb_username: vagrant
     smb_password: vagrant
 sites:
-  - map: neighbors
+  - map: ${PROJ_NAME}
     to: /home/vagrant/code/public
     type: "laravel"
     params:
       - key: APP_ENV
         value: local
       - key: APP_DOMAIN
-        value: neighbors
+        value: ${PROJ_NAME}
       - key: DB_DATABASE
-        value: neighbors
-  - map: neighbors.test
+        value: homestead
+  - map: ${PROJ_NAME}.test
     to: /home/vagrant/code/public
     type: "laravel"
     params:
       - key: APP_ENV
         value: staging
       - key: APP_DOMAIN
-        value: neighbors.test
+        value: ${PROJ_NAME}.test
 variables:
   - key: MY_SERVER
     value: LARAVEL_HOMESTEAD
 databases:
-  - neighbors
-  - neighbors_staging
-  - neighbors_dusk
+  - homestead
+  - homestead_staging
+  - homestead_dusk
 features:
   - mariadb: false
   - ohmyzsh: false
   - webdriver: false
-name: neighbors
-hostname: neighbors
+name: ${PROJ_NAME}
+hostname: ${PROJ_NAME}
