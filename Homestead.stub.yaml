@@ -8,7 +8,7 @@ authorize: ~/.ssh/id_rsa.pub
 keys:
   - ~/.ssh/id_rsa
 folders:
-  - map: 'G:\projects\neighbors'
+  - map: 'G:\projects\neighbors.ph\main'
     to: /home/vagrant/code
     smb_username: vagrant
     smb_password: vagrant
