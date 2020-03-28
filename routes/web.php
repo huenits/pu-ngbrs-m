@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,7 +21,7 @@ Route::get('/', function () {
 Route::get('phpinfo', function () {
     $desired_debug_env = 'local';
 
-    if (app()->environment($desired_debug_env)):
+    if (app()->environment($desired_debug_env) OR app()->environment('staging')):
         phpinfo();
     else:
         return 'Enviroment is not '.$desired_debug_env;

@@ -4,12 +4,8 @@ Project based on Laravel7
 
 ## Local setup
 
-- Project was based on https://github.com/huenisys/laravel7
 - $ ``git clone git@github.com:huenisys/neighbors.git``
-- Go to the project folder and share it to Windows user: vagrant
-- Create a Hyper-V virtual switch (Linux-VM-EXT) to be used as bridged network. Hyper-V ignores the IP set in Homestead.yaml but will declare what's used
-- Create a local Windows user: vagrant, with password: vagrant and specify credential in the shared folder. Homestead uses SMB.
-
+- Since Homestead uses SMB for shared dirs, share this project's folder to a pre-created dummy Windows user: <i title="username=vagrant password=vagrant">vagrant</i>. See relevant snippet below.
   ```yaml
   # Homestead.yaml
   ---
@@ -20,15 +16,19 @@ Project based on Laravel7
       smb_password: vagrant
   ---
   ```
+- Create a Hyper-V virtual switch (Linux-VM-EXT) to be used as bridged network. Note that said hypervisor ignores the IP set in Homestead.yaml but will declare what's used when you launch the machine with ``vagrant up``. Hyper-V is preferred because we all love [Docker](https://www.docker.com/).
   
-  Read further on https://dev.to/nicolus/getting-homestead-to-play-nice-with-hyper-v-4202
+  Read further here: https://dev.to/nicolus/getting-homestead-to-play-nice-with-hyper-v-4202 on how to make Hyper-V play nicely with Homestead.
+- $ ``composer install``
+- Copy Homestead.stub.yaml
+- $ ``mklink Homestead.yaml Homestead.stub.yaml``, then update sites and it's params for default ENV vars.
 - $ ``vagrant up``
 - $ ``cd {projectParentPath}/neighbors``
-- $ ``composer install``
-- $ ``cp .env.example .env``, then update it accordingly
+- $ ``mklink .env .env.staging``, then update it accordingly.
 - $ ``art key:generate``
 - $ ``vagrant ssh``
-- $ ``php artisan migrate``, in project dir
+- $ ``php artisan migrate --seed``
+- force SSL, see: https://medium.com/dinssa/ssl-certificates-laravel-homestead-windows-https-f83ec8b3198
 
 ### Ignored files
 
@@ -42,6 +42,8 @@ Project based on Laravel7
 - database
   - by default, mysql is used
   - local .env sample uses database: neighbors, user: homestead, password: secret
+  - staging .env locally uses database: neighbors_staging
+  - dusk stage runs use neighbors_dusk
   - Use SSH tunnel using a capable client like Navicat
 
 #### Testing
@@ -51,6 +53,7 @@ Project based on Laravel7
 - $ ``art config:clear``
 - $ ``art test``
 - for dusk testing, env: example is used for having a stage deployment locally
+- make sure to import homestead crt
 
 ## Releasing
 
