@@ -21,6 +21,7 @@ class LoginTest extends DuskTestCase
             $browser->visit('/login')
                 ->assertSee('Neighbors.PH')
                 ->assertSee('Login')
+                ->assertSchemeIs('https')
                 ->type('email', 'paul@someemail.com')
                 ->type('password', 'secret1')
                 ->press('Login')
@@ -45,6 +46,7 @@ class LoginTest extends DuskTestCase
                 ->type('password', 'secret')
                 ->press('Login')
                 ->assertPathIs('/home')
+                ->assertSchemeIs('https')
                 ->assertSee('Paul')
                 ->assertSee('You are logged in!');
         });

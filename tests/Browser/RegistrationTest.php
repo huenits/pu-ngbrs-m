@@ -26,6 +26,7 @@ class RegistrationTest extends DuskTestCase
             $browser->visit('/register')
                 ->assertSee('Neighbors.PH')
                 ->assertSee('Register')
+                ->assertSchemeIs('https')
                 ->assertAttribute('#name', 'required', 'true')
                 ->assertAttribute('#email', 'required', 'true')
                 ->assertAttribute('#password', 'required', 'true')
@@ -53,6 +54,7 @@ class RegistrationTest extends DuskTestCase
                 ->press('Register')
                 ->pause(1000)
                 ->assertPathIs('/home')
+                ->assertSchemeIs('https')
                 ->assertSee('logged in')
                 ->assertSee('Paolo1');
         });

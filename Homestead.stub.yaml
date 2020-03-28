@@ -2,6 +2,7 @@ ip: 192.168.10.10
 memory: 2048
 cpus: 2
 provider: hyperv
+ssl: true
 backup: true
 authorize: ~/.ssh/id_rsa.pub
 keys:
@@ -12,23 +13,31 @@ folders:
     smb_username: vagrant
     smb_password: vagrant
 sites:
-  - map: neighbors.test
-    to: /home/vagrant/code/public
-    type: "laravel"
-    params:
-      - key: APP_ENV
-        value: local
   - map: neighbors
     to: /home/vagrant/code/public
     type: "laravel"
     params:
       - key: APP_ENV
-        value: example
+        value: local
+      - key: APP_DOMAIN
+        value: neighbors
+      - key: DB_DATABASE
+        value: neighbors
+  - map: neighbors.test
+    to: /home/vagrant/code/public
+    type: "laravel"
+    params:
+      - key: APP_ENV
+        value: staging
+      - key: APP_DOMAIN
+        value: neighbors.test
 variables:
-  - key: PAOLOVAR
-    value: local
+  - key: MY_SERVER
+    value: LARAVEL_HOMESTEAD
 databases:
   - neighbors
+  - neighbors_staging
+  - neighbors_dusk
 features:
   - mariadb: false
   - ohmyzsh: false
